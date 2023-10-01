@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fault Log Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <center>
+    <img src="logo.png" alt="New Hampshire Capital">
+    </center>
+	<header>
+		<h1>Fault Log Form</h1>
+	</header>
+	<main>
+		<form action="https://onedrive.live.com/edit.aspx?resid=183F853841FA0B43!2338&ithint=file%2cxlsx&authkey=!AHwC5k1nKwWKSiw" method="submit">
+            <label for="SR Number">SR:</label>
+            <input type="number" id="SR Number" name="SR" required><br><br>
+            <label for="Account Number">Account:</label>
+            <input type="number" id="Account Number" name="Account" required><br><br>
+			<label for="meter-number">Meter Number:</label>
+			<input type="text" id="meter-number" name="meter-number" required><br><br>
+            <label for="Available Credit">Available Credit (KWH):</label>
+            <input type="number" id="Available Credit" name="Available-Credit" required><br><br>
+			<label for="customer-name">Customer Name:</label>
+			<input type="text" id="customer-name" name="customer-name" required><br><br>
+			<label for="address">Address:</label>
+			<input type="text" id="address" name="address" required><br><br>
+			<label for="phone-number">Phone Number:</label>
+			<input type="tel" id="phone-number" name="phone-number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br><br>
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email" required><br><br>
+			<label for="date">Date of Retrieval:</label>
+			<input type="date" id="date" name="date" required><br><br>
+			<label for="time">Time of Retrieval:</label>
+			<input type="time" id="time" name="time" required><br><br>
+			<div>
+        <input name="DEFECT" list="Defect" placeholder="Defect">
+          <details id="Defect">
+          <option value="Burnt Meter">
+      </div>
+      <label for="notes">Meter Defect:</label><br>
+			<textarea id="notes" name="notes" rows="5" cols="50"></textarea><br><br>
+
+            <h3>NHC Representatives:</h3>
+            <hr>
+			<label for="name">Name:</label>
+			<input type="text" id="name" name="name" required><br><br>
+            
+
+            <title>Signature</title>
+  </head>
+  <body>
+    <h3>Signature:</h3>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
+    <canvas id="signature-pad" width="300" height="100"></canvas>
+    <button type="button" onclick="clearSignature()">Clear Signature</button>
+    <form>
+      <input type="hidden" id="signature" name="signature">
+      <input type="submit" value="Submit">
+    </form>
+
+    <script>
+      var canvas = document.getElementById('signature-pad');
+      var signaturePad = new SignaturePad(canvas);
+
+      function clearSignature() {
+        signaturePad.clear();
+      }
+
+      var signatureInput = document.getElementById('signature');
+      var signatureData = signaturePad.toDataURL();
+      signatureInput.value = signatureData;
+    </script>
+
+
+            <hr>
+            <button onclick="getLocation()">Get Location</button>
+            <p id="coordinates"></p>
+
+            <script>
+            function getLocation() {
+            if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+             } else {
+            alert("Geolocation is not supported by this browser.");
+            }
+            }
+
+            function showPosition(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            document.getElementById("coordinates").innerHTML =
+            "Latitude: " + latitude + "<br>Longitude: " + longitude;
+            }
+            </script>
+            <label for="file">Meter Nameplate:</label>
+            <input type="file" id="file" name="file"><br><br>
+
+            <label for="file">Location front view:</label>
+            <input type="file" id="file" name="file"><br><br>
+
+            <input type="submit" value="Submit">
+		</form>
+	</main>
+</body>
+</html>
+
